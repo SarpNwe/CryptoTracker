@@ -90,23 +90,21 @@ const UserSidebar: React.FC<UserSidebarProps> = () => {
 
   return (
     <div>
-      {['right'].map((anchor) => (
-        <React.Fragment key={anchor}>
+      <React.Fragment key='right'>
           <Avatar
-            onClick={toggleDrawer(anchor, true)}
+            onClick={toggleDrawer('right', true)}
             style={{
               height: 38,
               width: 38,
               cursor: 'pointer',
               backgroundColor: '#EEBC1D',
             }}
-            src={user?.photoURL}
             alt={user?.email}
           />
-          <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
+          <Drawer anchor='right' open={state['right']} onClose={toggleDrawer('right', false)}>
             <div className={classes.container}>
               <div className={classes.profile}>
-                <Avatar className={classes.picture} src={user?.photoURL} alt={user?.email} />
+                <Avatar className={classes.picture} alt={user?.email} />
                 <span
                   style={{
                     width: '100%',
@@ -142,7 +140,6 @@ const UserSidebar: React.FC<UserSidebarProps> = () => {
             </div>
           </Drawer>
         </React.Fragment>
-      ))}
     </div>
   );
 };

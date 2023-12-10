@@ -110,7 +110,6 @@ const CoinInfo: React.FC<{ coin: any }> = ({ coin }) => {
                 <SelectButton
                   key={day.value}
                   onClick={() => setDays(day.value)}
-                  variant={day.value === days}
                 >
                   {day.label}
                 </SelectButton>

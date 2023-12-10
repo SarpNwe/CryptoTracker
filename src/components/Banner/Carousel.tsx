@@ -31,8 +31,12 @@ const useStyles = makeStyles({
   },
 });
 
-export function numberWithCommas(x: number): string {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+export function numberWithCommas(x: number | string): string {
+  if(typeof x === 'number' && isFinite(x)) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  } else {
+    return (x as string).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
 }
 
 const Carousel: React.FC = () => {

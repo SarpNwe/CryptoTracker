@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { CoinList } from '../config/api';
 import { CryptoState } from '../CryptoContext';
 import axios from 'axios';
-import { Container, LinearProgress, Tab, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, TextField, ThemeProvider, Typography, createTheme } from '@material-ui/core';
+import { Container, LinearProgress, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, ThemeProvider, Typography, createTheme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
 import { useNavigate } from 'react-router-dom';
 import { numberWithCommas } from './Banner/Carousel';
@@ -26,7 +26,7 @@ const useStyles = makeStyles({
 });
 
 const CoinsTable: React.FC = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading] = useState(false);
   const [search, setSearch] = useState('');
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
@@ -101,7 +101,7 @@ const CoinsTable: React.FC = () => {
                         fontFamily: "Montserrat",
                       }}
                       key={head}
-                      align={head === "Coin" ? "" : "right"}
+                      align={head === "Coin" ? undefined : "right"}
                     >
                       {head}
                     </TableCell>
@@ -159,7 +159,7 @@ const CoinsTable: React.FC = () => {
                         <TableCell
                           align='right'
                           style={{
-                            color: profit > 0 ? "rgb(14, 203, 129)" : "red",
+                            color: profit ? "rgb(14, 203, 129)" : "red",
                             fontWeight: 500,
                           }}
                         >
@@ -190,7 +190,7 @@ const CoinsTable: React.FC = () => {
             justifyContent: "center",
           }}
           classes={{ ul: classes.pagination }}
-          count={(handleSearch()?.length / 10).toFixed(0)}
+          count={Math.ceil(handleSearch()?.length / 10)}
           onChange={(_, value) => {
             setPage(value);
             window.scroll(0, -6);

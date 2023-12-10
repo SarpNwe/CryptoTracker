@@ -1,4 +1,9 @@
-export const chartDays = [
+interface Day {
+  label: string;
+  value: number;
+}
+
+export const chartDays: Day[] = [
     {
       label: "24 Hours",
       value: 1,

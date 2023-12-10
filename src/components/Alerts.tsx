@@ -7,6 +7,7 @@ const Alerts: React.FC = () => {
   const { alert, setAlert } = CryptoState();
 
   const handleClose = (event: React.SyntheticEvent<Element, Event>, reason: string) => {
+    event.target
     if (reason === 'clickaway') {
       return;
     }
@@ -17,7 +18,6 @@ const Alerts: React.FC = () => {
     <div>
       <Snackbar open={alert.open} autoHideDuration={3000} onClose={handleClose}>
         <MuiAlert
-          onClose={handleClose}
           severity={alert.type as AlertProps['severity']}
           elevation={10}
           variant="filled"

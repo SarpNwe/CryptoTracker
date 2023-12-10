@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { CoinList } from '../config/api';
+import React, { useState } from 'react';
 import { CryptoState } from '../../CryptoContext';
 import axios from 'axios';
 import { Box, Button, TextField } from '@material-ui/core';
@@ -9,8 +8,8 @@ interface LoginProps {
 }
 
 const Login: React.FC<LoginProps> = ({ handleClose }) => {
-  const [email, setEmail] = useState('test1@test.com');
-  const [password, setPassword] = useState('Doris2601');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const { setAlert, setUser } = CryptoState();
 

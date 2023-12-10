@@ -69,7 +69,7 @@ const CoinPage: React.FC = () => {
   const { currency, symbol, user, setUser } = CryptoState();
 
   const fetchCoin = async () => {
-    const { data } = await axios.get(SingleCoin(id, currency));
+    const { data } = await axios.get(SingleCoin(id ?? ""));
     setCoin(data);
   };
 
