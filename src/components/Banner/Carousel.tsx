@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core';
+import { makeStyles } from '@mui/styles';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 // import { CryptoState } from '../../CryptoContext';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { CryptoState } from '../CryptoContext';
-import { Snackbar } from '@material-ui/core';
-import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
+import { Snackbar } from '@mui/material';
+import  { AlertProps, Alert as MuiAlert } from '@mui/lab';
 
 const Alerts: React.FC = () => {
   const { alert, setAlert } = CryptoState();
@@ -17,7 +17,6 @@ const Alerts: React.FC = () => {
     <div>
       <Snackbar open={alert.open} autoHideDuration={3000} onClose={handleClose}>
         <MuiAlert
-          onClose={handleClose}
           severity={alert.type as AlertProps['severity']}
           elevation={10}
           variant="filled"

@@ -1,8 +1,7 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
+import { makeStyles } from '@mui/styles';
 import { Coin, CryptoState } from '../../CryptoContext';
-import { Avatar, Button } from '@material-ui/core';
+import { Avatar, Button, Drawer } from '@mui/material';
 
 const useStyles = makeStyles({
   container: {

@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { CoinList } from '../config/api';
 import { CryptoState } from '../CryptoContext';
 import axios from 'axios';
-import { Container, LinearProgress, Tab, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, TextField, ThemeProvider, Typography, createTheme } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core';
+import { Container, LinearProgress, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { makeStyles } from '@mui/styles';
 import { useNavigate } from 'react-router-dom';
 import { numberWithCommas } from './Banner/Carousel';
 import coinsList from "../assets/coinList.json";
-import { Pagination } from '@material-ui/lab';
+import { Pagination } from '@mui/lab';
 
 const useStyles = makeStyles({
   row: {
@@ -26,7 +27,7 @@ const useStyles = makeStyles({
 });
 
 const CoinsTable: React.FC = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading] = useState(false);
   const [search, setSearch] = useState('');
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
@@ -101,7 +102,7 @@ const CoinsTable: React.FC = () => {
                         fontFamily: "Montserrat",
                       }}
                       key={head}
-                      align={head === "Coin" ? "" : "right"}
+                      align={head === "Coin" ? undefined : "right"}
                     >
                       {head}
                     </TableCell>
@@ -153,13 +154,13 @@ const CoinsTable: React.FC = () => {
 
                         <TableCell align='right'>
                           {symbol}{""}
-                          {numberWithCommas(row.current_price.toFixed(2))}
+                          {numberWithCommas(parseFloat(row.current_price.toFixed(2)))}
                         </TableCell>
 
                         <TableCell
                           align='right'
                           style={{
-                            color: profit > 0 ? "rgb(14, 203, 129)" : "red",
+                            color: profit ? "rgb(14, 203, 129)" : "red",
                             fontWeight: 500,
                           }}
                         >
@@ -170,7 +171,7 @@ const CoinsTable: React.FC = () => {
                         <TableCell align='right'>
                           {symbol}{""}
                           {numberWithCommas(
-                            row.market_cap.toString().slice(0, -6)
+                            parseFloat(row.market_cap.toString().slice(0, -6))
                           )}
                           M
                         </TableCell>
@@ -190,7 +191,7 @@ const CoinsTable: React.FC = () => {
             justifyContent: "center",
           }}
           classes={{ ul: classes.pagination }}
-          count={(handleSearch()?.length / 10).toFixed(0)}
+          count={Math.ceil(handleSearch()?.length / 10)}
           onChange={(_, value) => {
             setPage(value);
             window.scroll(0, -6);

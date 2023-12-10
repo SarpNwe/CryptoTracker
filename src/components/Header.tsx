@@ -1,6 +1,7 @@
 import React from 'react';
-import { AppBar, Container, createTheme, MenuItem, Select, ThemeProvider, Toolbar, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { AppBar, Container, MenuItem, Select, Toolbar, Typography } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { makeStyles } from '@mui/styles';
 import { useNavigate } from 'react-router-dom';
 import { CryptoState } from '../CryptoContext';
 import AuthModal from './Authentication/AuthModal';

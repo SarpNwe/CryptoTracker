@@ -3,8 +3,9 @@ import { useParams } from 'react-router-dom';
 import { SingleCoin } from '../config/api';
 import { Coin, CryptoState } from '../CryptoContext';
 import axios from 'axios';
-import { Button, LinearProgress, Theme, Typography, } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core';
+import { Button, LinearProgress, Typography } from '@mui/material';
+import { Theme, createTheme } from '@mui/material/styles';
+import { makeStyles } from '@mui/styles';
 import CoinInfo from '../components/CoinInfo';
 import ReactHtmlParser from 'react-html-parser';
 import { numberWithCommas } from '../components/Banner/Carousel';
@@ -125,7 +126,9 @@ const CoinPage: React.FC = () => {
     fetchCoin();
   }, []);
 
-  const classes = useStyles();
+  const theme = createTheme();
+
+  const classes = useStyles(theme);
 
   const isInWatchlist = (coin: Coin) => {
     console.log("IS IN WATCHLIST", coin);

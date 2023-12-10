@@ -2,8 +2,8 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 
 interface Alert {
   open: boolean;
-  message: string;
-  type: string;
+  message?: string;
+  type?: string;
 }
 
 interface Watchlist {

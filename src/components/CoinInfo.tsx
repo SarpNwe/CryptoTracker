@@ -2,8 +2,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import { CryptoState } from '../CryptoContext';
 import { HistoricalChart } from '../config/api';
 import axios from 'axios';
-import { CircularProgress, ThemeProvider, createTheme } from '@material-ui/core';
-import { Theme, makeStyles } from '@material-ui/core/styles';
+import { CircularProgress } from '@mui/material';
+import { ThemeProvider, createTheme, Theme } from '@mui/material/styles';
+import { makeStyles } from '@mui/styles';
 import { Line } from 'react-chartjs-2';
 import { CategoryScale, Chart, LinearScale, registerables } from 'chart.js';
 import { chartDays } from '../config/data';
@@ -60,7 +61,7 @@ const CoinInfo: React.FC<{ coin: any }> = ({ coin }) => {
     },
   });
 
-  const classes = useStyles();
+  const classes = useStyles(darkTheme);
 
   return (
     <ThemeProvider theme={darkTheme}>

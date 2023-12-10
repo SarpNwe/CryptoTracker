@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { CoinList } from '../config/api';
 import { CryptoState } from '../../CryptoContext';
 import axios from 'axios';
-import { Box, Button, TextField } from '@material-ui/core';
+import { Box, Button, TextField } from '@mui/material';
 
 interface LoginProps {
   handleClose: () => void;
